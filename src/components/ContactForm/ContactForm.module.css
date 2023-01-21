@@ -1,0 +1,50 @@
+.contactFormWrapper {
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+}
+
+.labelName {
+  margin-right: 30px;
+}
+
+.addContactBtn {
+  display: block;
+  width: 450px;
+  height: 40px;
+  border-radius: 5px;
+  color: aliceblue;
+  font-size: 20px;
+  font-weight: 600;
+  background-color: rgb(167, 167, 167);
+  margin-top: 20px;
+}
+
+.addContactBtn:hover,
+.addContactBtn:focus {
+  background-color: rgb(246, 187, 99);
+  color: black;
+  scale: 1.05;
+}
+
+.inputData {
+  width: 200px;
+  height: 30px;
+}
+
+p {
+  margin: 5px 5px;
+  /* font-size: 5px; */
+}
+
+.inputName {
+  font-size: 20px;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.inputDataWrapper {
+  display: flex;
+  justify-content: flex-start;
+  margin: 0;
+}
