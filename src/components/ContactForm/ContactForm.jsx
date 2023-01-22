@@ -5,36 +5,36 @@ import css from './ContactForm.module.css';
 import { useSelector } from 'react-redux';
 import { addContact } from 'components/redux/contactSlice';
 
-const ContactForm = ({ onSubmit }) => {
+const initialState = {
+  name: '',
+  number: '',
+};
+const ContactForm = () => {
   // const [name, setName] = useState('');
   // const [number, setNumber] = useState('');
 
-  const initialState = {
-    name: '',
-    number: '',
-  };
-
   const [state, setState] = useState(initialState);
-  const contacts = useSelector(getContacts);
   const contactId = nanoid();
 
-  console.log('ContactForm contacts', contacts);
+  // console.log('ContactForm contacts', contacts);
 
   const handleChange = evt => {
-    const { name, number } = evt.target;
+    const { name, value } = evt.target;
 
     setState(prev => {
       return {
         ...prev,
-        [name]: number,
+        [name]: value,
       };
     });
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
+
     const { name, number } = state;
-    onSubmit({ name, number });
+    console.log(state);
+    addContact(name, number);
     setState(initialState);
   };
 

@@ -14,17 +14,18 @@ function ContactList() {
 
   return (
     <div>
-      {contacts.map(({ id, name, number }) => {
-        return (
-          <li key={id}>
-            <p>Name: {name} </p>
-            <p>Number: {number} </p>
-            <button type="button" onClick={() => dispatch(deleteContact(id))}>
-              Delete
-            </button>
-          </li>
-        );
-      })}
+      {contacts &&
+        contacts.map(({ id, name, number }) => {
+          return (
+            <li key={id}>
+              <p>Name: {name} </p>
+              <p>Number: {number} </p>
+              <button type="button" onClick={() => dispatch(deleteContact(id))}>
+                Delete
+              </button>
+            </li>
+          );
+        })}
     </div>
   );
 }

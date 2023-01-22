@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { persistReducer } from 'redux-persist';
+import { persistReducer, persistStore } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
@@ -10,13 +10,15 @@ const initialContactsState = [
   { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
+
+console.log('initialContactsState', initialContactsState);
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: initialContactsState,
   reducers: {
     addContact: {
-      reducer(state, action) {
-        state.push(action.payload);
+      reducer(store, action) {
+        store.push(action.payload);
       },
       prepare(name, number) {
         return {
@@ -42,5 +44,9 @@ const persistConfig = {
   storage,
 };
 
+console.log('storage', storage);
+
 export const { addContact, deleteContact } = contactsSlice.actions;
 export const persistedReducer = persistReducer(persistConfig, contactsSlice.reducer);
+console.log('persistedReducer', persistedReducer);
+console.log('contactsSlice.actions', contactsSlice.actions);
