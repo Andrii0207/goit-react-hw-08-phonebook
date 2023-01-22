@@ -1,41 +1,41 @@
+import { getContacts } from 'components/redux/selectors';
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import css from './ContactForm.module.css';
+import { useSelector } from 'react-redux';
+import { addContact } from 'components/redux/contactSlice';
 
 const ContactForm = ({ onSubmit }) => {
-  const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  // const [name, setName] = useState('');
+  // const [number, setNumber] = useState('');
 
+  const initialState = {
+    name: '',
+    number: '',
+  };
+
+  const [state, setState] = useState(initialState);
+  const contacts = useSelector(getContacts);
   const contactId = nanoid();
 
+  console.log('ContactForm contacts', contacts);
+
   const handleChange = evt => {
-    const { name, value } = evt.target;
+    const { name, number } = evt.target;
 
-    switch (name) {
-      case 'name':
-        setName(value);
-        break;
-
-      case 'number':
-        setNumber(value);
-        break;
-      default:
-        return;
-    }
+    setState(prev => {
+      return {
+        ...prev,
+        [name]: number,
+      };
+    });
   };
 
   const handleSubmit = evt => {
     evt.preventDefault();
-
-    const { name, number } = evt.target;
-
-    onSubmit(name.value, number.value);
-    resetForm();
-  };
-
-  const resetForm = () => {
-    setName('');
-    setNumber('');
+    const { name, number } = state;
+    onSubmit({ name, number });
+    setState(initialState);
   };
 
   return (
@@ -45,7 +45,7 @@ const ContactForm = ({ onSubmit }) => {
           <p className={css.inputName}>Name</p>
           <input
             onChange={handleChange}
-            value={name}
+            value={state.name}
             className={css.inputData}
             type="text"
             name="name"
@@ -55,11 +55,11 @@ const ContactForm = ({ onSubmit }) => {
             required
           />
         </label>
-        <label htmlFor="">
+        <label htmlFor={contactId}>
           <p className={css.inputName}>Number</p>
           <input
             onChange={handleChange}
-            value={number}
+            value={state.number}
             className={css.inputData}
             type="tel"
             name="number"

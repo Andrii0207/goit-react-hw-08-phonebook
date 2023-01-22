@@ -1,17 +1,16 @@
 // import { nanoid } from 'nanoid';
 // import { useState, useEffect } from 'react';
+import { PersistGate } from 'redux-persist/integration/react';
+import { Provider } from 'react-redux';
+import { persistor, store } from '../components/redux/store';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
 
-import { PersistGate } from 'redux-persist/integration/react';
-import { Provider } from 'react-redux';
-import persistor from '../components/redux/store';
-
 export function App() {
   return (
-    <div>
-      <Provider>
+    <>
+      <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <div>
             <h1>Phonebook</h1>
@@ -22,7 +21,7 @@ export function App() {
           </div>
         </PersistGate>
       </Provider>
-    </div>
+    </>
   );
 }
 
