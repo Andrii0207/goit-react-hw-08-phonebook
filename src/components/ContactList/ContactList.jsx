@@ -1,4 +1,4 @@
-import { getContacts, getFilterContacts } from 'components/redux/selectors';
+import { getContacts, getFilteredContacts } from 'components/redux/selectors';
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'components/redux/contactSlice';
@@ -7,10 +7,10 @@ import { deleteContact } from 'components/redux/contactSlice';
 
 function ContactList() {
   const dispatch = useDispatch();
-  const { contacts } = useSelector(getContacts);
-  const filter = useSelector(getFilterContacts);
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilteredContacts);
 
-  console.log('ContactList contacts', contacts);
+  console.log('ContactList contacts1', contacts);
 
   return (
     <div>
@@ -20,7 +20,7 @@ function ContactList() {
             <li key={id}>
               <p>Name: {name} </p>
               <p>Number: {number} </p>
-              <button type="button" onClick={() => dispatch(deleteContact(id))}>
+              <button type="button" onClick={() => dispatch(deleteContact())}>
                 Delete
               </button>
             </li>
