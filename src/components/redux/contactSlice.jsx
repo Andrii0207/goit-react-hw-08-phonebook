@@ -11,14 +11,13 @@ const initialContactsState = [
   { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
 ];
 
-console.log('initialContactsState', initialContactsState);
 const contactsSlice = createSlice({
   name: 'contacts',
   initialState: initialContactsState,
   reducers: {
     addContact: {
-      reducer(store, action) {
-        store.push(action.payload);
+      reducer(state, action) {
+        return [...state, action.payload];
       },
       prepare(name, number) {
         return {
@@ -44,9 +43,8 @@ const persistConfig = {
   storage,
 };
 
-console.log('storage', storage);
-
 export const { addContact, deleteContact } = contactsSlice.actions;
 export const persistedReducer = persistReducer(persistConfig, contactsSlice.reducer);
-console.log('persistedReducer', persistedReducer);
-console.log('contactsSlice.actions', contactsSlice.actions);
+
+console.log('addContact', addContact);
+console.log('deleteContact', deleteContact);
