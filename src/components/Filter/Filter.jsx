@@ -6,7 +6,7 @@ import { getFilteredContacts } from '../redux/selectors';
 function Filter() {
   const dispatch = useDispatch();
   const filterValue = useSelector(getFilteredContacts);
-  console.log('filterValue', filterValue);
+  // console.log('filterValue', filterValue);
 
   const handleFilter = evt => {
     const inputValue = evt.currentTarget.value;

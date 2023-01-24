@@ -16,8 +16,8 @@ const ContactForm = () => {
   const [state, setState] = useState(initialState);
   const contactId = nanoid();
   const dispatch = useDispatch();
-  const getState = useSelector(state => state);
-  console.log('getState', getState);
+  // const getState = useSelector(state => state);
+  // console.log('getState', getState);
 
   // console.log('ContactForm contacts', contacts);
 

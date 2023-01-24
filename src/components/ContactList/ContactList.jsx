@@ -2,6 +2,7 @@ import { getContacts, getFilteredContacts } from 'components/redux/selectors';
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'components/redux/contactSlice';
+
 // import Contact from '../Contact/Contact';
 // import css from './ContactList.module.css';
 
@@ -10,11 +11,12 @@ function ContactList() {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilteredContacts);
 
-  console.log('ContactList contacts1', contacts);
+  console.log('ContactList contacts1', contacts.length);
+  console.log('ContactList filter1', filter);
 
   return (
     <div>
-      {contacts &&
+      {contacts.length > 0 &&
         contacts.map(({ id, name, number }) => {
           return (
             <li key={id}>
