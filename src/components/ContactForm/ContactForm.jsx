@@ -10,16 +10,10 @@ const initialState = {
   number: '',
 };
 const ContactForm = () => {
-  // const [name, setName] = useState('');
-  // const [number, setNumber] = useState('');
-
   const [state, setState] = useState(initialState);
+
   const contactId = nanoid();
   const dispatch = useDispatch();
-  // const getState = useSelector(state => state);
-  // console.log('getState', getState);
-
-  // console.log('ContactForm contacts', contacts);
 
   const handleChange = evt => {
     const { name, value } = evt.target;

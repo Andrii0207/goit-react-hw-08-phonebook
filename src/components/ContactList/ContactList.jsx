@@ -3,31 +3,26 @@ import { getContacts, getFilteredContacts } from 'components/redux/selectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'components/redux/contactSlice';
 
-// import Contact from '../Contact/Contact';
-// import css from './ContactList.module.css';
-
 function ContactList() {
   const dispatch = useDispatch();
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilteredContacts);
 
-  console.log('ContactList contacts1', contacts.length);
-  console.log('ContactList filter1', filter);
+  console.log('ContactList contacts1', contacts);
 
   return (
     <div>
-      {contacts.length > 0 &&
-        contacts.map(({ id, name, number }) => {
-          return (
-            <li key={id}>
-              <p>Name: {name} </p>
-              <p>Number: {number} </p>
-              <button type="button" onClick={() => dispatch(deleteContact())}>
-                Delete
-              </button>
-            </li>
-          );
-        })}
+      {contacts.map(({ id, name, number }) => {
+        return (
+          <li key={id}>
+            <p>Name: {name} </p>
+            <p>Number: {number} </p>
+            <button type="button" onClick={() => dispatch(deleteContact())}>
+              Delete
+            </button>
+          </li>
+        );
+      })}
     </div>
   );
 }
