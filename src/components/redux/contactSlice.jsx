@@ -19,10 +19,10 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        // return [...state, action.payload];
-        state.items.find(item => action.payload.name.toLowerCase() === item.name.toLowerCase())
-          ? alert(`${action.payload.name} is already in contacts`)
-          : state.items.push(action.payload);
+        state.items = [...state.items, action.payload];
+        // state.items.find(item => action.payload.name.toLowerCase() === item.name.toLowerCase())
+        //   ? alert(`${action.payload.name} is already in contacts`)
+        //   : state.items.push(action.payload);
       },
       prepare(name, number) {
         return {
@@ -35,10 +35,14 @@ const contactsSlice = createSlice({
       },
     },
     deleteContact: {
-      reducer(state, action) {
-        const index = state.items.findIndex(task => task.id === action.payload);
-        state.items.splice(index, 1);
+      reducer(state, { payload }) {
+        // console.log('payload', payload);
+        state.items = state.items.filter(({ id }) => id !== payload);
       },
+      // reducer(state, action) {
+      //   const index = state.items.findIndex(task => task.id === action.payload);
+      //   state.items.splice(index, 1);
+      // },
     },
   },
 });
