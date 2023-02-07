@@ -1,0 +1,30 @@
+.contactWrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 500px;
+  height: 30px;
+  margin: 5px 0;
+}
+
+.deleteContactBtn {
+  border-radius: 5px;
+  color: aliceblue;
+  background-color: rgb(167, 167, 167);
+}
+
+.deleteContactBtn:hover,
+.deleteContactBtn:focus {
+  background-color: rgb(246, 187, 99);
+  color: black;
+  scale: 1.05;
+}
+
+.contactData {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.contactDataWrapper {
+  display: flex;
+  flex-direction: column;
+}
