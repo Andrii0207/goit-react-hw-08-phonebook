@@ -8,22 +8,19 @@ function ContactList() {
   const contacts = useSelector(getContacts);
   const filter = useSelector(getFilteredContacts);
 
-  console.log('ContactList contacts1', contacts);
-
-  const visibleContacts = () => {
-    contacts.filter(contact => contact.name.toLowerCase().includes(filter));
+  const filteredContacts = () => {
+    if (!filter) {
+      return contacts;
+    }
+    return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
   };
-
-  const filteredContacts = visibleContacts();
-  console.log('filteredContacts', filteredContacts);
-  console.log('getFilteredContacts', filter);
 
   return (
     <div>
-      {contacts.map(({ id, name, number }) => {
+      {filteredContacts().length === 0 && <p>You find any contacts</p>}
+      {filteredContacts().map(({ id, name, number }) => {
         return (
           <li key={id}>
-            <p>id: {id} </p>
             <p>Name: {name} </p>
             <p>Number: {number} </p>
             <button type="button" onClick={() => dispatch(deleteContact(id))}>
