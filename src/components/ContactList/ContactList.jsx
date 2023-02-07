@@ -10,6 +10,14 @@ function ContactList() {
 
   console.log('ContactList contacts1', contacts);
 
+  const visibleContacts = () => {
+    contacts.filter(contact => contact.name.toLowerCase().includes(filter));
+  };
+
+  const filteredContacts = visibleContacts();
+  console.log('filteredContacts', filteredContacts);
+  console.log('getFilteredContacts', filter);
+
   return (
     <div>
       {contacts.map(({ id, name, number }) => {

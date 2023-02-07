@@ -36,7 +36,6 @@ const contactsSlice = createSlice({
     },
     deleteContact: {
       reducer(state, { payload }) {
-        // console.log('payload', payload);
         state.items = state.items.filter(({ id }) => id !== payload);
       },
       // reducer(state, action) {

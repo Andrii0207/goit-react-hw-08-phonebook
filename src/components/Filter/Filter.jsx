@@ -1,17 +1,20 @@
 import css from './Filter.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { setStatusFilter } from '../redux/filterSlice';
-import { getFilteredContacts } from '../redux/selectors';
+import { setFilter } from '../redux/filterSlice';
+import { getFilteredContacts, getContacts } from '../redux/selectors';
 
 function Filter() {
   const dispatch = useDispatch();
   const filterValue = useSelector(getFilteredContacts);
-  // console.log('filterValue', filterValue);
+  console.log('filterValue', filterValue);
 
-  const handleFilter = evt => {
-    const inputValue = evt.currentTarget.value;
-    dispatch(setStatusFilter(inputValue));
-  };
+  const contacts = useSelector(getContacts);
+  console.log('Filter contacts2', contacts);
+
+  // const handleFilter = evt => {
+  //   const inputValue = evt.currentTarget.value;
+  //   dispatch(setFilter(inputValue));
+  // };
 
   return (
     <>
@@ -21,7 +24,7 @@ function Filter() {
         type="text"
         name="filter"
         value={filterValue}
-        onChange={handleFilter}
+        onChange={e => dispatch(setFilter(e.target.value))}
       />
     </>
   );
