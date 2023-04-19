@@ -1,5 +1,5 @@
 import { getContacts, getFilteredContacts } from 'redux/selectors';
-// import PropTypes from 'prop-types';
+import { GrClose } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redux/contactSlice';
 import css from './ContactList.module.css';
@@ -18,8 +18,6 @@ function ContactList() {
     );
   };
 
-  console.log(filteredContacts());
-
   return (
     <div>
       {filteredContacts().length === 0 && <p>You haven't found any contacts</p>}
@@ -34,7 +32,7 @@ function ContactList() {
               type="button"
               onClick={() => dispatch(deleteContact(id))}
             >
-              Delete
+              <GrClose style={{ width: '40px' }} />
             </button>
           </li>
         );
