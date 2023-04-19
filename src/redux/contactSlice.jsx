@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { persistReducer, persistStore } from 'redux-persist';
+import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
@@ -19,10 +19,13 @@ const contactsSlice = createSlice({
   reducers: {
     addContact: {
       reducer(state, action) {
-        state.items = [...state.items, action.payload];
-        // state.items.find(item => action.payload.name.toLowerCase() === item.name.toLowerCase())
-        //   ? alert(`${action.payload.name} is already in contacts`)
-        //   : state.items.push(action.payload);
+        state.items.find(
+          item => item.name.toLowerCase() === action.payload.name.toLowerCase()
+        )
+          ? Notiflix.Notify.info(
+              `${action.payload.name} is already in contacts`
+            )
+          : (state.items = [...state.items, action.payload]);
       },
       prepare(name, number) {
         return {
@@ -54,4 +57,7 @@ const persistConfig = {
 
 export const { addContact, deleteContact } = contactsSlice.actions;
 export const contactsReducer = contactsSlice.reducer;
-export const persistedReducer = persistReducer(persistConfig, contactsSlice.reducer);
+export const persistedReducer = persistReducer(
+  persistConfig,
+  contactsSlice.reducer
+);

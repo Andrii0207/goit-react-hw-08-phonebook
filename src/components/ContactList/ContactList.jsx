@@ -18,6 +18,8 @@ function ContactList() {
     );
   };
 
+  console.log(filteredContacts());
+
   return (
     <div>
       {filteredContacts().length === 0 && <p>You haven't found any contacts</p>}
