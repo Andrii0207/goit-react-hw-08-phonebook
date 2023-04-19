@@ -3,7 +3,7 @@ import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import css from './ContactForm.module.css';
 import { useDispatch } from 'react-redux';
-import { addContact } from 'components/redux/contactSlice';
+import { addContact } from 'redux/contactSlice';
 
 const initialState = {
   name: '',

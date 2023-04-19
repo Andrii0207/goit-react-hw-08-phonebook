@@ -1,7 +1,7 @@
-import { getContacts, getFilteredContacts } from 'components/redux/selectors';
+import { getContacts, getFilteredContacts } from 'redux/selectors';
 // import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'components/redux/contactSlice';
+import { deleteContact } from 'redux/contactSlice';
 import css from './ContactList.module.css';
 
 function ContactList() {
@@ -13,12 +13,14 @@ function ContactList() {
     if (!filter) {
       return contacts;
     }
-    return contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
   };
 
   return (
     <div>
-      {filteredContacts().length === 0 && <p>You find any contacts</p>}
+      {filteredContacts().length === 0 && <p>You haven't found any contacts</p>}
       {filteredContacts().map(({ id, name, number }) => {
         return (
           <li key={id} className={css.contactWrapper}>
