@@ -17,15 +17,15 @@ function ContactList() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const sortContacts = () => {
-    return [...contacts].sort((a, b) => a.name.localeCompare(b.name));
-  };
+  const sortedContacts = [...contacts].sort((a, b) =>
+    a.name.localeCompare(b.name)
+  );
 
   const filteredContacts = () => {
     if (!filter) {
-      return sortContacts();
+      return sortedContacts;
     }
-    return sortContacts().filter(contact =>
+    return sortedContacts.filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
   };
