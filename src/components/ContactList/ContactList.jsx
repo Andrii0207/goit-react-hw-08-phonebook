@@ -17,17 +17,21 @@ function ContactList() {
     dispatch(fetchContacts());
   }, [dispatch]);
 
+  const sortContacts = () => {
+    return [...contacts].sort((a, b) => a.name.localeCompare(b.name));
+  };
+
   const filteredContacts = () => {
     if (!filter) {
-      return contacts;
+      return sortContacts();
     }
-    return contacts.filter(contact =>
+    return sortContacts().filter(contact =>
       contact.name.toLowerCase().includes(filter.toLowerCase())
     );
   };
 
   return (
-    <div>
+    <div className={css.listContact}>
       {filteredContacts().length === 0 && <p>You haven't found any contacts</p>}
       {filteredContacts().map(({ id, name, number }) => {
         return (
