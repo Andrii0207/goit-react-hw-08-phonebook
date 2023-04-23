@@ -1,13 +1,21 @@
-import { getContacts, getFilteredContacts } from 'redux/selectors';
+import { selectContacts, getFilteredContacts } from 'redux/selectors';
 import { GrClose } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
-import { deleteContact } from 'redux/contactSlice';
+
 import css from './ContactList.module.css';
+import { useEffect } from 'react';
+import { fetchContacts, deleteContact } from '../../service/operations';
 
 function ContactList() {
   const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(selectContacts);
   const filter = useSelector(getFilteredContacts);
+
+  console.log(contacts);
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   const filteredContacts = () => {
     if (!filter) {

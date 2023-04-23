@@ -30,7 +30,7 @@ const ContactForm = () => {
     evt.preventDefault();
 
     const { name, number } = state;
-    dispatch(addContact(name, number));
+    // dispatch(addContact(name, number));
     setState(initialState);
   };
 
