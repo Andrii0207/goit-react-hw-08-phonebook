@@ -1,15 +1,21 @@
-import { selectContacts, getFilteredContacts } from 'redux/selectors';
+import {
+  selectContacts,
+  getFilteredContacts,
+  selectIsLoading,
+} from 'redux/selectors';
 import { GrClose } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
 
 import css from './ContactList.module.css';
 import { useEffect } from 'react';
 import { fetchContacts, deleteContact } from '../../service/operations';
+import { Loader } from 'components/Loader/Loader';
 
 function ContactList() {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
   const filter = useSelector(getFilteredContacts);
+  const isLoading = useSelector(selectIsLoading);
 
   console.log(contacts);
 
@@ -32,6 +38,7 @@ function ContactList() {
 
   return (
     <div className={css.listContact}>
+      {isLoading && <Loader />}
       {filteredContacts().length === 0 && <p>You haven't found any contacts</p>}
       {filteredContacts().map(({ id, name, number }) => {
         return (
