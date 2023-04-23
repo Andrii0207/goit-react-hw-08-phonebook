@@ -5,28 +5,33 @@ import { Loader } from 'components/Loader/Loader';
 import {
   selectIsLoading,
   selectFilteredContacts,
-  sortedContacts,
+  selectSortedContacts,
+  selectContacts,
 } from 'redux/selectors';
 import { fetchContacts, deleteContact } from '../../service/operations';
 import css from './ContactList.module.css';
 
 function ContactList() {
   const dispatch = useDispatch();
-  const filter = useSelector(selectFilteredContacts);
+  const filterState = useSelector(selectFilteredContacts);
   const isLoading = useSelector(selectIsLoading);
+  const contacts = useSelector(selectContacts);
 
-  // console.log('contacts', contacts);
+  // const sortedContacts = useSelector(selectSortedContacts);
+
+  console.log('contacts', contacts);
+  // console.log('sortedContacts', sortedContacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
   const filteredContacts = () => {
-    if (!filter) {
-      return sortedContacts;
+    if (!filterState) {
+      return contacts;
     }
-    return sortedContacts.filter(contact =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filterState.toLowerCase())
     );
   };
 
