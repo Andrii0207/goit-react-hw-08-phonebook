@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import Notiflix from 'notiflix';
+// import Notiflix from 'notiflix';
 import {
   addContact,
   deleteContact,
@@ -39,11 +39,7 @@ const contactsSlice = createSlice({
     [deleteContact.rejected]: handleRejected,
     [addContact.pending]: handlePending,
     [addContact.fulfilled](state, { payload }) {
-      state.items = state.items.find(
-        item => item.name.toLowerCase() === payload.name.toLowerCase()
-      )
-        ? alert(`Name ${payload.name} is already in contacts`)
-        : [...state.items, payload];
+      state.items = [...state.items, payload];
       state.isLoading = false;
       state.error = null;
     },

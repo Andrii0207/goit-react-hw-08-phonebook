@@ -1,31 +1,25 @@
-import {
-  selectContacts,
-  getFilteredContacts,
-  selectIsLoading,
-} from 'redux/selectors';
-import { GrClose } from 'react-icons/gr';
 import { useDispatch, useSelector } from 'react-redux';
-
-import css from './ContactList.module.css';
 import { useEffect } from 'react';
-import { fetchContacts, deleteContact } from '../../service/operations';
+import { GrClose } from 'react-icons/gr';
 import { Loader } from 'components/Loader/Loader';
+import {
+  selectIsLoading,
+  selectFilteredContacts,
+  sortedContacts,
+} from 'redux/selectors';
+import { fetchContacts, deleteContact } from '../../service/operations';
+import css from './ContactList.module.css';
 
 function ContactList() {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-  const filter = useSelector(getFilteredContacts);
+  const filter = useSelector(selectFilteredContacts);
   const isLoading = useSelector(selectIsLoading);
 
-  console.log(contacts);
+  // console.log('contacts', contacts);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
-
-  const sortedContacts = [...contacts].sort((a, b) =>
-    a.name.localeCompare(b.name)
-  );
 
   const filteredContacts = () => {
     if (!filter) {
