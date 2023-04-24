@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import Notiflix from 'notiflix';
 import {
   addContact,
   deleteContact,
@@ -32,7 +31,9 @@ const contactsSlice = createSlice({
     [fetchContacts.rejected]: handleRejected,
     [deleteContact.pending]: handlePending,
     [deleteContact.fulfilled](state, { payload }) {
-      state.items = state.items.filter(item => item.id !== payload);
+      // state.items = state.items.filter(item => item.id !== payload);
+      const index = state.items.findIndex(contact => contact.id === payload.id);
+      state.items.splice(index, 1);
       state.isLoading = false;
       state.error = null;
     },

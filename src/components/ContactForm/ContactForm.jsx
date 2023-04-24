@@ -1,8 +1,10 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
+import Notiflix from 'notiflix';
 import css from './ContactForm.module.css';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'service/operations';
+import { selectContacts } from 'redux/selectors';
 
 const initialState = {
   name: '',
@@ -10,6 +12,7 @@ const initialState = {
 };
 const ContactForm = () => {
   const [state, setState] = useState(initialState);
+  const contacts = useSelector(selectContacts);
 
   const contactId = nanoid();
   const dispatch = useDispatch();
@@ -29,7 +32,13 @@ const ContactForm = () => {
     evt.preventDefault();
     const { name, number } = state;
 
-    dispatch(addContact({ name, number }));
+    const newName = evt.target.elements.name.value;
+
+    contacts.find(item => item.name.toLowerCase() === newName.toLowerCase())
+      ? Notiflix.Notify.warning(`${newName} is already in contacts`)
+      : dispatch(addContact({ name, number })) &&
+        Notiflix.Notify.success(`${newName} has added to your phonebook`);
+
     setState(initialState);
   };
 
