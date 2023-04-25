@@ -35,7 +35,7 @@ const ContactForm = () => {
     const newName = evt.target.elements.name.value;
 
     contacts.find(item => item.name.toLowerCase() === newName.toLowerCase())
-      ? Notiflix.Notify.warning(`${newName} is already in contacts`)
+      ? Notiflix.Notify.info(`${newName} is already in contacts`)
       : dispatch(addContact({ name, number })) &&
         Notiflix.Notify.success(`${newName} has added to your phonebook`);
 

@@ -1,5 +1,7 @@
+/* eslint-disable array-callback-return */
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
+import Notiflix from 'notiflix';
 import { GrClose } from 'react-icons/gr';
 // import { Loader } from 'components/Loader/Loader';
 import {
@@ -33,6 +35,17 @@ function ContactList() {
     );
   };
 
+  console.log(contacts);
+
+  const deleteCurrentContact = id => {
+    console.log(id);
+    contacts.find(item => {
+      if (item.id === id) {
+        return item.name;
+      }
+    });
+  };
+
   return (
     <ul className={css.listContact}>
       {/* {isLoading && <Loader />} */}
@@ -46,7 +59,14 @@ function ContactList() {
             <button
               className={css.deleteContactBtn}
               type="button"
-              onClick={() => dispatch(deleteContact(id))}
+              onClick={() =>
+                dispatch(
+                  deleteContact(id),
+                  Notiflix.Notify.warning(
+                    `${deleteCurrentContact(id)} was delete from contacts`
+                  )
+                )
+              }
             >
               <GrClose style={{ width: '40px' }} />
             </button>
