@@ -3,11 +3,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import Notiflix from 'notiflix';
 import { GrClose } from 'react-icons/gr';
-// import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 import {
   // selectIsLoading,
   selectFilteredContacts,
   selectContacts,
+  selectIsLoading,
 } from 'redux/selectors';
 import { fetchContacts, deleteContact } from '../../service/operations';
 import css from './ContactList.module.css';
@@ -15,7 +16,7 @@ import css from './ContactList.module.css';
 function ContactList() {
   const dispatch = useDispatch();
   const filterState = useSelector(selectFilteredContacts);
-  // const isLoading = useSelector(selectIsLoading);
+  const isLoading = useSelector(selectIsLoading);
   const contacts = useSelector(selectContacts);
 
   useEffect(() => {
@@ -37,7 +38,7 @@ function ContactList() {
 
   return (
     <ul className={css.listContact}>
-      {/* {isLoading && <Loader />} */}
+      {isLoading && <Loader />}
       {filteredContacts().length === 0 && <p>You haven't found any contacts</p>}
       {filteredContacts().map(({ id, name, number }) => {
         return (
