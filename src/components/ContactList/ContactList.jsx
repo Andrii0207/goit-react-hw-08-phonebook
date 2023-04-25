@@ -35,17 +35,6 @@ function ContactList() {
     );
   };
 
-  console.log(contacts);
-
-  const deleteCurrentContact = id => {
-    console.log(id);
-    contacts.find(item => {
-      if (item.id === id) {
-        return item.name;
-      }
-    });
-  };
-
   return (
     <ul className={css.listContact}>
       {/* {isLoading && <Loader />} */}
@@ -60,12 +49,16 @@ function ContactList() {
               className={css.deleteContactBtn}
               type="button"
               onClick={() =>
-                dispatch(
-                  deleteContact(id),
-                  Notiflix.Notify.warning(
-                    `${deleteCurrentContact(id)} was delete from contacts`
-                  )
-                )
+                dispatch(deleteContact(id))
+                  .unwrap()
+                  .then(({ name, id }) => {
+                    Notiflix.Notify.warning(
+                      `${name} was deleted from contacts`
+                    );
+                  })
+                  .catch(rejectedValueOrSerializedError => {
+                    console.log(rejectedValueOrSerializedError);
+                  })
               }
             >
               <GrClose style={{ width: '40px' }} />
