@@ -1,9 +1,11 @@
 import ContactList from 'components/ContactList/ContactList';
 
-export const Contacts = () => {
+export const PhoneBook = () => {
   return (
     <div>
-      <p>PhoneBook</p>
+      <b>
+        <p>Contacts</p>
+      </b>
       <ContactList />
     </div>
   );

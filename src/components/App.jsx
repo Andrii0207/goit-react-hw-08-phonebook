@@ -4,18 +4,18 @@ import Filter from './Filter/Filter';
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { Register } from 'pages/Register';
-import { Login } from 'pages/Login';
-import { Contacts } from 'pages/Contacts';
+import { PhoneBook } from 'pages/PhoneBook';
 import { HomePage } from 'pages/Home';
+import { LoginForm } from './LoginForm/LoginForm';
 
 export const App = () => {
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
+        <Route path="/phonebook" element={<PhoneBook />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/contacts" element={<Contacts />} />
+        <Route path="/login" element={<LoginForm />} />
       </Route>
     </Routes>
   );

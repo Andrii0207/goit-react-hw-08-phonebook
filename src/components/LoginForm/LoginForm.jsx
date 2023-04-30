@@ -1,11 +1,15 @@
+import css from './LoginForm.module.css';
+
 export const LoginForm = () => {
   return (
-    <form autoComplete="off">
-      <label type="email" name="email">
+    <form className={css.form} autoComplete="off">
+      <label className={css.label}>
         Email
+        <input type="email" name="email" />
       </label>
-      <label type="password" name="password">
+      <label className={css.label}>
         Password
+        <input type="password" name="password" />
       </label>
       <button type="submit">Log In</button>
     </form>
