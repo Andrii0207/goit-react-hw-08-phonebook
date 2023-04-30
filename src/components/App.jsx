@@ -1,21 +1,35 @@
+import { Route, Routes } from 'react-router-dom';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+import { Layout } from './Layout';
+import { Register } from 'pages/Register';
+import { Login } from 'pages/Login';
+import { Contacts } from 'pages/Contacts';
 
-export function App() {
+export const App = () => {
   return (
-    <>
-      <div>
-        <h1>Phonebook</h1>
-        <ContactForm />
-        <h2>Contacts</h2>
-        <Filter />
-        <ContactList />
-      </div>
-    </>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index element={<div>Home Page</div>} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/contacts" element={<Contacts />} />
+      </Route>
+    </Routes>
   );
-}
+};
+// / ===================================
 
+// /* <div>
+//       <h1>Phonebook</h1>
+//       <ContactForm />
+//       <h2>Contacts</h2>
+//       <Filter />
+//       <ContactList />
+//     </div> */
+
+// ===================================
 // const [contacts, setContacts] = useState(() => {
 //   const contactsLocalStorage = JSON.parse(localStorage.getItem('contacts'));
 //   return (
