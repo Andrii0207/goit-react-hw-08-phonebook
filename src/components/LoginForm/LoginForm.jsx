@@ -1,11 +1,11 @@
 export const LoginForm = () => {
   return (
-    <form>
-      <label>
-        <input type="email" name="email" />
+    <form autoComplete="off">
+      <label type="email" name="email">
+        Email
       </label>
-      <label>
-        <input type="password" name="password" />
+      <label type="password" name="password">
+        Password
       </label>
       <button type="submit">Log In</button>
     </form>
