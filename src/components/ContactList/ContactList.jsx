@@ -4,14 +4,14 @@ import { useEffect } from 'react';
 import Notiflix from 'notiflix';
 import { GrClose } from 'react-icons/gr';
 import { Loader } from 'components/Loader/Loader';
-import {
-  // selectIsLoading,
-  selectFilteredContacts,
-  selectContacts,
-  selectIsLoading,
-} from 'redux/selectors';
+
 import { fetchContacts, deleteContact } from '../../service/operations';
 import css from './ContactList.module.css';
+import {
+  selectContacts,
+  selectFilteredContacts,
+  selectIsLoading,
+} from 'redux/contacts/selectors';
 
 function ContactList() {
   const dispatch = useDispatch();
