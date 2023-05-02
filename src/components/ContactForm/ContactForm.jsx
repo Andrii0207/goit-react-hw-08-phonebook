@@ -3,7 +3,7 @@ import { useState } from 'react';
 import Notiflix from 'notiflix';
 import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'service/operations';
+import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
 
 const initialState = {

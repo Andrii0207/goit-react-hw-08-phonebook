@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { register } from './operations.js';
 
 export const authSlice = createSlice({
   name: 'auth',
@@ -8,5 +9,13 @@ export const authSlice = createSlice({
     isLoaggedIn: false,
     isRefreshing: false,
   },
-  extraRedusers: {},
+  extraRedusers: {
+    [register.fulfilled](state, { payload }) {
+      state.user = payload.user;
+      state.token = payload.token;
+      state.isLoaggedIn = true;
+    },
+  },
 });
+
+export const authReducer = authSlice.reducer;
