@@ -1,0 +1,9 @@
+.authNavWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.authNavRegister {
+  margin-right: 20px;
+}

@@ -1,0 +1,8 @@
+.navigationList {
+  display: flex;
+  justify-content: center;
+}
+
+.navigationItem {
+  margin-right: 20px;
+}

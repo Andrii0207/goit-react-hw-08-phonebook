@@ -1,0 +1,8 @@
+.header {
+  max-width: 1200px;
+  padding: 10px 20px;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+}
