@@ -9,7 +9,7 @@ export const authSlice = createSlice({
     isLoaggedIn: false,
     isRefreshing: false,
   },
-  extraRedusers: {
+  extraReducers: {
     [register.fulfilled](state, { payload }) {
       state.user = payload.user;
       state.token = payload.token;
