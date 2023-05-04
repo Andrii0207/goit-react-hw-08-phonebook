@@ -5,7 +5,7 @@ import Notiflix from 'notiflix';
 import { GrClose } from 'react-icons/gr';
 import { Loader } from 'components/Loader/Loader';
 
-import { fetchContacts, deleteContact } from '../../redux/contacts/operations';
+import { deleteContact, fetchContacts } from '../../redux/contacts/operations';
 import css from './ContactList.module.css';
 import {
   selectContacts,
@@ -22,6 +22,8 @@ function ContactList() {
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
+  console.log(contacts);
 
   const sortedContacts = [...contacts].sort((a, b) =>
     a.name.localeCompare(b.name)

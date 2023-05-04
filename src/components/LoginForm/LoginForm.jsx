@@ -29,7 +29,6 @@ export const LoginForm = () => {
 
     const { email, password } = state;
     dispatch(logIn({ email, password }));
-    console.log(state);
     form.reset();
   };
 
@@ -41,7 +40,11 @@ export const LoginForm = () => {
       </label>
       <label className={css.label}>
         Password
-        <input type="password" name="password" onChange={handleChange} />
+        <input
+          type="current-password"
+          name="password"
+          onChange={handleChange}
+        />
       </label>
       <button type="submit">Log In</button>
     </form>

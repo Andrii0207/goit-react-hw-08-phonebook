@@ -55,7 +55,7 @@ export const RegisterForm = () => {
       <label className={css.label}>
         Password
         <input
-          type="password"
+          type="current-password"
           name="password"
           value={password}
           onChange={handleChange}
