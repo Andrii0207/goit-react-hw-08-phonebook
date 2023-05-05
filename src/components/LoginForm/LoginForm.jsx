@@ -2,6 +2,7 @@ import { useState } from 'react';
 import css from './LoginForm.module.css';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {
   email: '',
@@ -11,6 +12,7 @@ const initialState = {
 export const LoginForm = () => {
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleChange = e => {
     const { name, value } = e.currentTarget;
@@ -29,6 +31,7 @@ export const LoginForm = () => {
 
     const { email, password } = state;
     dispatch(logIn({ email, password }));
+    navigate('/contacts');
     form.reset();
   };
 

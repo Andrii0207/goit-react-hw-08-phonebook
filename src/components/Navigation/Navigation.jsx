@@ -9,7 +9,7 @@ export const Navigation = () => {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/phonebook">PhoneBook</NavLink>
+          <NavLink to="/contacts">PhoneBook</NavLink>
         </li>
       </ul>
     </nav>

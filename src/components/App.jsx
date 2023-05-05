@@ -10,6 +10,8 @@ import { LoginForm } from './LoginForm/LoginForm';
 import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 import { useEffect } from 'react';
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -22,9 +24,30 @@ export const App = () => {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
-        <Route path="/phonebook" element={<PhoneBook />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route
+          path="/register"
+          element={
+            <RestrictedRoute>
+              <Register />
+            </RestrictedRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <RestrictedRoute>
+              <LoginForm />
+            </RestrictedRoute>
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <PrivateRoute>
+              <PhoneBook />
+            </PrivateRoute>
+          }
+        />
       </Route>
     </Routes>
   );
