@@ -11,7 +11,7 @@ import { useDispatch } from 'react-redux';
 import { refreshUser } from 'redux/auth/operations';
 import { useEffect } from 'react';
 import { PrivateRoute } from './PrivateRoute';
-import { RestrictedRoute } from './RestrictedRoute';
+import { PublicRoute } from './PublicRoute';
 
 export const App = () => {
   const dispatch = useDispatch();
@@ -27,17 +27,17 @@ export const App = () => {
         <Route
           path="/register"
           element={
-            <RestrictedRoute>
+            <PublicRoute>
               <Register />
-            </RestrictedRoute>
+            </PublicRoute>
           }
         />
         <Route
           path="/login"
           element={
-            <RestrictedRoute>
+            <PublicRoute>
               <LoginForm />
-            </RestrictedRoute>
+            </PublicRoute>
           }
         />
         <Route
