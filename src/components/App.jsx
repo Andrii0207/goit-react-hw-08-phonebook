@@ -7,8 +7,17 @@ import { Register } from 'pages/Register';
 import { PhoneBook } from 'pages/PhoneBook';
 import { HomePage } from 'pages/Home';
 import { LoginForm } from './LoginForm/LoginForm';
+import { useDispatch } from 'react-redux';
+import { refreshUser } from 'redux/auth/operations';
+import { useEffect } from 'react';
 
 export const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
+
   return (
     <Routes>
       <Route path="/" element={<Layout />}>
