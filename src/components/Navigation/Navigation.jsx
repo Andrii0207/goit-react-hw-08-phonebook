@@ -1,17 +1,16 @@
-import { NavLink } from 'react-router-dom';
-import css from './Navigation.module.css';
+import { Item, List, StyledLink } from './Navigation.styled';
 
 export const Navigation = () => {
   return (
     <nav>
-      <ul className={css.navigationList}>
-        <li className={css.navigationItem}>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/contacts">PhoneBook</NavLink>
-        </li>
-      </ul>
+      <List>
+        <Item>
+          <StyledLink to="/">Home</StyledLink>
+        </Item>
+        <Item>
+          <StyledLink to="/contacts">PhoneBook</StyledLink>
+        </Item>
+      </List>
     </nav>
   );
 };

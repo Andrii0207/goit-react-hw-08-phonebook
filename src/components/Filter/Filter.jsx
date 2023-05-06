@@ -9,7 +9,7 @@ function Filter() {
   const filterContacts = useSelector(selectFilteredContacts);
 
   return (
-    <>
+    <div className={css.filterWripper}>
       <p className={css.inputName}>Find contacts by name</p>
       <input
         className={css.inputData}
@@ -18,7 +18,7 @@ function Filter() {
         value={filterContacts}
         onChange={e => dispatch(setFilter(e.target.value))}
       />
-    </>
+    </div>
   );
 }
 

@@ -1,7 +1,9 @@
+import backgroundIMG from '../service/backgroundIMG.jpeg';
+
 export const HomePage = () => {
   return (
-    <div>
-      <h1>Home page</h1>
-    </div>
+    <>
+      <img src={backgroundIMG} alt={backgroundIMG} width="100%" />
+    </>
   );
 };

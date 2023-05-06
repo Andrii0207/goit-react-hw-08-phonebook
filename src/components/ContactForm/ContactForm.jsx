@@ -1,10 +1,17 @@
 import { nanoid } from 'nanoid';
 import { useState } from 'react';
 import Notiflix from 'notiflix';
-import css from './ContactForm.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { addContact } from 'redux/contacts/operations';
 import { selectContacts } from 'redux/contacts/selectors';
+import {
+  AddContactBtn,
+  FormWrapper,
+  InputData,
+  InputDataWrapper,
+  InputName,
+  LabelName,
+} from './ContactForm.styled';
 
 const initialState = {
   name: '',
@@ -43,14 +50,13 @@ const ContactForm = () => {
   };
 
   return (
-    <form className={css.contactFormWrapper} onSubmit={handleSubmit}>
-      <div className={css.inputDataWrapper}>
-        <label className={css.labelName} htmlFor={contactId}>
-          <p className={css.inputName}>Name</p>
-          <input
+    <FormWrapper onSubmit={handleSubmit}>
+      <InputDataWrapper>
+        <LabelName htmlFor={contactId}>
+          <InputName>Name</InputName>
+          <InputData
             onChange={handleChange}
             value={state.name}
-            className={css.inputData}
             type="text"
             name="name"
             id={contactId}
@@ -58,25 +64,22 @@ const ContactForm = () => {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
           />
-        </label>
-        <label htmlFor={contactId}>
-          <p className={css.inputName}>Number</p>
-          <input
+        </LabelName>
+        <LabelName htmlFor={contactId}>
+          <InputName>Number</InputName>
+          <InputData
             onChange={handleChange}
             value={state.number}
-            className={css.inputData}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
           />
-        </label>
-      </div>
-      <button className={css.addContactBtn} type="submit">
-        Add contact
-      </button>
-    </form>
+        </LabelName>
+      </InputDataWrapper>
+      <AddContactBtn type="submit">Add contact</AddContactBtn>
+    </FormWrapper>
   );
 };
 

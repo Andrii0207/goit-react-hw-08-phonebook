@@ -30,4 +30,6 @@
 }
 .listContact {
   margin-left: 0;
+  display: inline-block;
+  margin: auto;
 }
