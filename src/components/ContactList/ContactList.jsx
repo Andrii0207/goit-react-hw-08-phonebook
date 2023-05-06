@@ -4,7 +4,6 @@ import { useEffect } from 'react';
 import Notiflix from 'notiflix';
 import { GrClose } from 'react-icons/gr';
 import { Loader } from 'components/Loader/Loader';
-
 import { deleteContact, fetchContacts } from '../../redux/contacts/operations';
 import css from './ContactList.module.css';
 import {

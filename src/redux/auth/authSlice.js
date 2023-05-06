@@ -52,22 +52,3 @@ export const authPersistedReducer = persistReducer(
   authPersistConfig,
   authSlice.reducer
 );
-// export const authReducer = authSlice.reducer;
-
-// {
-//     [register.fulfilled](state, { payload }) {
-//       state.user = payload.user;
-//       state.token = payload.token;
-//       state.isLoggedIn = true;
-//     },
-//     [logIn.fulfilled](state, { payload }) {
-//       state.user = payload.user;
-//       state.token = payload.token;
-//       state.isLoggedIn = true;
-//     },
-//     [logOut.fulfilled](state) {
-//       state.user = { name: null, email: null };
-//       state.token = null;
-//       state.isLoggedIn = false;
-//     },
-//   },
