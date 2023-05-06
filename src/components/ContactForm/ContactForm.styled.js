@@ -5,6 +5,7 @@ export const FormWrapper = styled.form`
   flex-direction: column;
   min-width: 250px;
   align-items: center;
+  margin-top: 70px;
 `;
 
 export const InputDataWrapper = styled.div`
@@ -39,10 +40,17 @@ export const LabelName = styled.label`
 `;
 
 export const InputName = styled.p`
-  font-size: 20px;
-  font-weight: 400;
+  font-size: 15px;
+  font-weight: 300;
   font-style: italic;
   margin: 5px 5px;
+
+  /* display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 300;
+  font-style: italic; */
 `;
 
 export const InputData = styled.input`

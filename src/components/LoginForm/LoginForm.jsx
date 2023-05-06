@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import css from './LoginForm.module.css';
 import { useDispatch } from 'react-redux';
 import { logIn } from 'redux/auth/operations';
+import { InputDataLogIn, Label, LogInBTN } from './LoginForm.styled';
+import { Form } from './LoginForm.styled';
 
 const initialState = {
   email: '',
@@ -33,20 +34,20 @@ export const LoginForm = () => {
   };
 
   return (
-    <form className={css.form} autoComplete="off" onSubmit={handleSubmit}>
-      <label className={css.label}>
+    <Form autoComplete="off" onSubmit={handleSubmit}>
+      <Label>
         Email
-        <input type="email" name="email" onChange={handleChange} />
-      </label>
-      <label className={css.label}>
+        <InputDataLogIn type="email" name="email" onChange={handleChange} />
+      </Label>
+      <Label>
         Password
-        <input
-          type="current-password"
+        <InputDataLogIn
+          type="password"
           name="password"
           onChange={handleChange}
         />
-      </label>
-      <button type="submit">Log In</button>
-    </form>
+      </Label>
+      <LogInBTN type="submit">Enter</LogInBTN>
+    </Form>
   );
 };

@@ -4,7 +4,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { Layout } from './Layout';
 import { Register } from 'pages/Register';
-import { PhoneBook } from 'pages/PhoneBook/PhoneBook';
+import { PhoneBook } from 'pages/PhoneBook';
 import { HomePage } from 'pages/Home';
 import { LoginForm } from './LoginForm/LoginForm';
 import { useDispatch } from 'react-redux';
